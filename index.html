@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>VA-MED-1096-HLK-0047 — RESTRICTED</title>
+<style>
+@font-face {
+  font-family: 'Special Elite';
+  src: url('SpecialElite-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Courier Prime';
+  src: url('CourierPrime-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Courier Prime';
+  src: url('CourierPrime-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Courier Prime';
+  src: url('CourierPrime-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+- { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+background: #2a2420;
+min-height: 100vh;
+font-family: ‘Courier Prime’,‘Courier New’,monospace;
+}
+
+/* ===== ENTRY SCREEN ===== */
+#entryScreen {
+position: fixed;
+top:0; left:0; width:100%; height:100%;
+background: #0e0c0a;
+z-index: 9000;
+align-items: center;
+justify-content: center;
+padding: 20px;
+}
+.entry-box {
+max-width:480px; width:100%;
+text-align:center;
+padding:40px 28px;
+border:1px solid #3a2a1a;
+background:#130f0b;
+box-shadow:0 0 60px rgba(0,0,0,0.8);
+}
+.entry-crest-ph {
+width:72px; height:72px;
+margin:0 auto 20px;
+border:1px solid #3a2a1a;
+display:flex; align-items:center; justify-content:center;
+font-size:26px; color:#3a2a1a;
+}
+.entry-crest { width:72px; height:auto; margin:0 auto 20px; display:none; }
+.entry-classified {
+font-family:‘Special Elite’,serif;
+font-size:22px; letter-spacing:5px;
+color:#8b1a1a; border:2px solid #8b1a1a;
+padding:4px 18px; display:inline-block; margin-bottom:24px;
+}
+.entry-title {
+font-family:‘Special Elite’,serif;
+font-size:12px; letter-spacing:3px; color:#a09070; margin-bottom:6px;
+}
+.entry-sub {
+font-size:9px; letter-spacing:2px; color:#6a5a40;
+margin-bottom:16px; line-height:1.8;
+}
+.entry-sub .w { color:#8b4a2a; }
+.entry-hr { border:none; border-top:1px solid #2a1a0a; margin:16px 0; }
+.entry-btn {
+background:transparent; border:1px solid #6a5a40; color:#a09070;
+font-family:‘Special Elite’,serif; font-size:13px; letter-spacing:4px;
+padding:10px 32px; cursor:pointer; margin-top:8px; transition:all 0.2s;
+}
+.entry-btn:hover { background:rgba(160,144,112,0.08); border-color:#a09070; color:#c0b090; }
+.entry-footer { font-size:8px; color:#3a2a1a; letter-spacing:1px; margin-top:20px; }
+
+/* ===== PASSWORD POPUP ===== */
+#passwordPopup {
+position:fixed; top:0; left:0; width:100%; height:100%;
+background:rgba(240,236,228,0.75);
+backdrop-filter:blur(2px);
+z-index:500;
+align-items:center; justify-content:center; padding:20px;
+}
+.pp-box {
+background:#f0ece4; border:2px solid #8a7a6a;
+max-width:400px; width:100%; padding:28px 24px;
+box-shadow:0 4px 30px rgba(0,0,0,0.2); text-align:center;
+}
+.pp-title {
+font-family:‘Special Elite’,serif; font-size:12px;
+letter-spacing:2px; color:#4a3a2a; margin-bottom:4px;
+}
+.pp-sub { font-size:9px; letter-spacing:1px; color:#3a3028; margin-bottom:18px; }
+.pp-warn-wrap {
+position:relative; margin-bottom:18px;
+padding:12px; border:1px solid #c0b090;
+}
+.pp-classified-bg {
+position:absolute; top:50%; left:50%;
+transform:translate(-50%,-50%);
+font-family:‘Special Elite’,serif; font-size:26px; letter-spacing:4px;
+color:rgba(26,58,107,0.18); border:3px solid rgba(26,58,107,0.18);
+padding:4px 14px; white-space:nowrap; pointer-events:none; user-select:none;
+}
+.pp-warn-txt {
+font-size:9px; color:#3a3028;
+letter-spacing:1px; line-height:1.9; position:relative; z-index:1;
+}
+.pp-warn-txt .wr { color:#8b1a1a; }
+.pp-label { font-size:9px; letter-spacing:2px; color:#3a3028; margin-bottom:8px; }
+.pp-input {
+width:100%; background:transparent; border:none;
+border-bottom:1px solid #8a7a6a;
+color:#1a1410; font-family:‘Courier Prime’,monospace;
+font-size:14px; letter-spacing:4px; text-align:center;
+padding:6px 4px; outline:none; margin-bottom:12px;
+}
+.pp-input::placeholder { color:#c0b090; letter-spacing:2px; }
+.pp-err { font-size:9px; color:#8b1a1a; letter-spacing:1px; min-height:14px; margin-bottom:12px; }
+.pp-btn {
+background:transparent; border:1px solid #8a7a6a;
+color:#4a3a2a; font-family:‘Special Elite’,serif;
+font-size:11px; letter-spacing:3px; padding:8px 24px;
+cursor:pointer; transition:background 0.2s;
+}
+.pp-btn:hover { background:rgba(74,58,42,0.08); }
+.pp-foot { font-size:8px; color:#c0b090; letter-spacing:1px; margin-top:14px; }
+
+/* ===== MAIN DOCUMENT ===== */
+#mainContent {
+justify-content:center;
+padding:20px 0 40px; min-height:100vh;
+}
+.document {
+width:100%; max-width:680px;
+background:#f0ece4;
+color:#1a1410;
+padding:32px 24px; position:relative;
+box-shadow:0 4px 30px rgba(0,0,0,0.5);
+align-self:flex-start;
+}
+.doc-wm {
+position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
+width:45vw; max-width:300px; height:auto;
+pointer-events:none; z-index:2; user-select:none; display:none;
+}
+.doc-content { position:relative; z-index:3; }
+
+.doc-hdr {
+text-align:center; border-bottom:3px double #8a7a6a;
+padding-bottom:12px; margin-bottom:16px;
+}
+.doc-crest-ph {
+width:64px; height:64px; margin:0 auto 8px;
+border:1px dashed #c0b090;
+display:flex; align-items:center; justify-content:center;
+font-size:20px; color:#c0b090;
+}
+.doc-crest { width:64px; height:auto; margin:0 auto 8px; display:none; }
+.doc-title { font-family:‘Special Elite’,serif; font-size:15px; letter-spacing:3px; color:#1a1410; margin-bottom:4px; }
+.doc-sub { font-size:10px; letter-spacing:2px; color:#3a3028; margin-bottom:8px; }
+.cls-block { display:flex; flex-direction:column; align-items:center; gap:6px; margin-bottom:8px; }
+.stamp { display:inline-block; font-family:‘Special Elite’,serif; font-size:11px; letter-spacing:3px; padding:2px 10px; border:2px solid; text-align:center; }
+.s-red { color:#8b1a1a; border-color:#8b1a1a; transform:rotate(-1.5deg); }
+.s-blue { color:#1a3a6b; border-color:#1a3a6b; transform:rotate(0.8deg); }
+.supp-cls { font-size:10px; letter-spacing:1px; color:#3a3028; margin-top:2px; }
+.rx-trigger {
+display:inline-block; background:#1a1410; color:#1a1410;
+padding:1px 8px; cursor:pointer; transition:background 0.15s; user-select:none; font-size:12px;
+}
+.rx-trigger:hover { background:#8b1a1a; color:#8b1a1a; }
+.doc-num { font-size:10px; color:#3a3028; letter-spacing:1px; margin-top:6px; }
+
+.sec { margin-bottom:20px; }
+.sec-ttl {
+font-family:‘Special Elite’,serif; font-size:11px; letter-spacing:2px;
+color:#4a3a2a; border-bottom:1px solid #8a7a6a;
+padding-bottom:4px; margin-bottom:10px;
+}
+.f { display:grid; grid-template-columns:160px 1fr; gap:4px 8px; margin-bottom:5px; align-items:baseline; }
+.fl { color:#3a3028; font-size:10px; letter-spacing:0.5px; }
+.fv { border-bottom:1px solid #c0b090; padding-bottom:1px; min-height:16px; color:#1a1410; font-size:11px; }
+.rx-i { display:inline-block; background:#1a1410; color:#1a1410; padding:1px 8px; font-size:11px; line-height:1.4; }
+
+.pid-row { display:flex; gap:16px; margin-bottom:12px; }
+.pid-flds { flex:1; }
+.pid-box {
+width:90px; min-width:90px; height:110px;
+border:1px solid #8a7a6a; background:#e8e3d8;
+overflow:hidden; display:flex; flex-direction:column;
+align-items:center; justify-content:center;
+gap:4px; font-size:8px; color:#3a3028; text-align:center; letter-spacing:1px;
+}
+.pid-box img { width:100%; height:100%; object-fit:cover; display:none; }
+.pid-icon { font-size:18px; color:#8a7a6a; }
+
+.exam-photos { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:12px 0; }
+.exam-box {
+border:1px solid #8a7a6a; background:#e8e3d8;
+aspect-ratio:1/2; overflow:hidden;
+display:flex; flex-direction:column; align-items:center; justify-content:center;
+gap:4px; padding:8px 4px; font-size:8px; color:#3a3028; text-align:center; letter-spacing:0.5px;
+}
+.exam-box img { width:100%; height:100%; object-fit:cover; display:none; }
+.exam-icon { font-size:20px; color:#8a7a6a; }
+
+.status-badge { display:inline-block; font-family:‘Special Elite’,serif; font-size:11px; letter-spacing:2px; padding:2px 8px; border:1px solid #1a3a6b; color:#1a3a6b; }
+.ag { display:grid; grid-template-columns:1fr 1fr; gap:4px 16px; }
+.oc { background:#e8e3d8; border-left:3px solid #8a7a6a; padding:8px 10px; font-size:10px; font-style:italic; color:#3a3028; margin:8px 0; line-height:1.7; }
+.sig-g { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:8px; }
+.sig-b { border-top:1px solid #8a7a6a; padding-top:4px; font-size:9px; color:#3a3028; letter-spacing:0.5px; }
+.sig-v { font-size:10px; color:#1a1410; margin-top:2px; min-height:14px; }
+.doc-ftr {
+margin-top:20px; padding-top:12px; border-top:3px double #8a7a6a;
+display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:10px;
+}
+.wo-stamp {
+font-family:‘Special Elite’,serif; font-size:9px; letter-spacing:1px;
+color:#1a3a6b; border:1px solid #1a3a6b;
+padding:4px 8px; transform:rotate(-2deg); display:inline-block; line-height:1.5; text-align:center;
+}
+.note-txt { font-size:8px; color:#3a3028; font-style:italic; max-width:200px; text-align:right; line-height:1.5; }
+
+/* ===== BACK OVERLAY ===== */
+#overlay {
+position:fixed; top:0; left:0; width:100%; height:100%;
+background:rgba(0,0,0,0.85); z-index:1000;
+overflow-y:auto; padding:20px 0 40px;
+}
+.back-doc {
+width:100%; max-width:680px; margin:0 auto;
+background:#d4b896; color:#2c1810;
+padding:32px 24px; position:relative;
+box-shadow:0 4px 40px rgba(0,0,0,0.7);
+}
+.back-wm {
+position:fixed; top:50%; left:50%;
+transform:translate(-50%,-50%) rotate(-18deg);
+font-family:‘Special Elite’,serif;
+font-size:80px; letter-spacing:10px;
+color:rgba(139,69,19,0.08);
+white-space:nowrap;
+pointer-events:none; z-index:0; user-select:none;
+}
+.back-cnt { position:relative; z-index:1; }
+.back-hdr { text-align:center; border-bottom:3px double #8b4513; padding-bottom:12px; margin-bottom:16px; }
+.back-ttl { font-family:‘Special Elite’,serif; font-size:13px; letter-spacing:2px; color:#2c1810; margin-bottom:4px; }
+.back-sub { font-size:9px; letter-spacing:2px; color:#4a2818; }
+.warn-stamp { display:inline-block; font-family:‘Special Elite’,serif; font-size:13px; letter-spacing:3px; color:#8b0000; border:2px solid #8b0000; padding:3px 12px; transform:rotate(-1deg); margin:8px 0; }
+.acc-warn { background:rgba(139,0,0,0.1); border:1px solid #8b0000; padding:6px 10px; margin-bottom:16px; font-size:9px; color:#8b0000; letter-spacing:1px; text-align:center; line-height:1.6; }
+.b-sec { margin-bottom:24px; }
+.b-sec-ttl { font-family:‘Special Elite’,serif; font-size:11px; letter-spacing:2px; color:#6b2010; border-bottom:1px solid #8b4513; padding-bottom:4px; margin-bottom:10px; line-height:1.6; }
+.bf { display:grid; grid-template-columns:140px 1fr; gap:4px 8px; margin-bottom:5px; font-size:11px; }
+.bfl { color:#4a2818; font-size:10px; letter-spacing:0.5px; }
+.bfv { border-bottom:1px solid #b07040; padding-bottom:1px; color:#2c1810; font-size:11px; line-height:1.6; }
+.i-blk { background:rgba(0,0,0,0.04); border:1px solid #b07040; padding:12px; margin-bottom:12px; }
+.i-row { font-size:10px; color:#2c1810; margin-bottom:4px; line-height:1.6; }
+.en { background:rgba(139,69,19,0.08); border-left:3px solid #8b4513; padding:8px 10px; margin:8px 0; font-size:10px; font-style:italic; color:#4a2818; line-height:1.7; }
+.en-lbl { font-style:normal; font-weight:bold; font-size:9px; letter-spacing:1px; color:#6b2010; margin-bottom:4px; display:block; }
+.m-txt { font-size:10px; color:#2c1810; line-height:1.7; margin:6px 0; }
+.b-div { border:none; border-top:1px solid #b07040; margin:10px 0; }
+.step-blk { margin-bottom:16px; padding-bottom:16px; border-bottom:1px dashed #b07040; }
+.step-blk:last-child { border-bottom:none; }
+.step-ttl { font-family:‘Special Elite’,serif; font-size:10px; letter-spacing:1px; color:#6b2010; margin-bottom:6px; }
+.step-txt { font-size:10px; color:#2c1810; line-height:1.7; margin-bottom:6px; }
+.b-photo { margin:14px 0; }
+.b-photo-lbl { font-family:‘Special Elite’,serif; font-size:9px; letter-spacing:2px; color:#8b0000; margin-bottom:6px; display:block; }
+.b-photo-ph { border:2px solid #8b0000; background:rgba(139,0,0,0.04); display:flex; flex-direction:column; align-items:center; justify-content:center; padding:14px 8px; font-size:8px; color:#8b0000; text-align:center; letter-spacing:1px; gap:6px; min-height:80px; }
+.b-photo-ph-icon { font-size:22px; }
+.b-photo-img { display:none; max-width:440px; max-height:880px; width:auto; height:auto; filter:sepia(65%); }
+.concl { background:rgba(139,69,19,0.06); border:1px solid #8b4513; padding:14px; margin-top:16px; }
+.concl-ttl { font-family:‘Special Elite’,serif; font-size:11px; letter-spacing:2px; color:#6b2010; margin-bottom:10px; text-align:center; border-bottom:1px solid #b07040; padding-bottom:6px; }
+.concl-txt { font-size:10px; color:#2c1810; line-height:1.8; margin-bottom:6px; }
+.final-ln { font-family:‘Special Elite’,serif; font-size:12px; color:#6b2010; font-style:italic; margin-top:12px; text-align:center; letter-spacing:1px; }
+.b-seal { display:flex; justify-content:flex-end; align-items:flex-end; margin-top:20px; padding-top:12px; border-top:1px solid #8b4513; gap:12px; flex-wrap:wrap; }
+.p-seal { font-family:‘Special Elite’,serif; font-size:9px; letter-spacing:1px; color:#6b2010; border:1px solid #8b4513; padding:4px 10px; transform:rotate(1.5deg); text-align:center; line-height:1.6; }
+.eo-stamp { font-family:‘Special Elite’,serif; font-size:13px; letter-spacing:3px; color:#8b0000; border:2px solid #8b0000; padding:3px 10px; transform:rotate(-2deg); }
+.rx-b { display:inline-block; background:#2c1810; color:#2c1810; padding:0 6px; font-size:10px; line-height:1.4; }
+.close-btn { position:fixed; top:16px; right:16px; background:rgba(139,0,0,0.85); color:#f0e0d0; border:none; font-family:‘Courier Prime’,monospace; font-size:11px; letter-spacing:1px; padding:7px 16px; cursor:pointer; z-index:1001; }
+.close-btn:hover { background:#8b0000; }
+
+@media(max-width:480px){
+.document,.back-doc{padding:20px 14px;}
+.f{grid-template-columns:120px 1fr;}
+.exam-photos{gap:4px;}
+.sig-g{grid-template-columns:1fr;}
+.ag{grid-template-columns:1fr;}
+.bf{grid-template-columns:110px 1fr;}
+.note-txt{text-align:left;max-width:100%;}
+.b-photo-img{max-width:100%;}
+}
+</style>
+
+</head>
+<body>
+
+<!-- ENTRY SCREEN -->
+
+<div id="entryScreen" style="display:flex;">
+  <div class="entry-box">
+    <div class="entry-crest-ph" id="crestEntryPh">&#9651;</div>
+    <img id="crestEntry" class="entry-crest" src="" alt="">
+    <div class="entry-classified">CLASSIFIED</div>
+    <div class="entry-title">VICTORIAN WAR OFFICE</div>
+    <div class="entry-sub">
+      THIS DOCUMENT CONTAINS<br>
+      <span class="w">HIGHLY CLASSIFIED MILITARY RECORDS</span><br>
+      AUTHORISED PERSONNEL ONLY<br>
+      UNAUTHORISED ACCESS IS A CRIMINAL OFFENCE
+    </div>
+    <hr class="entry-hr">
+    <div class="entry-sub" style="margin-bottom:0;font-size:8px;">VA-MED-1096-HLK-0047 // HILLOCK GARRISON</div>
+    <button class="entry-btn" id="enterBtn">[ ENTER ]</button>
+    <div class="entry-footer">VA-NET SECURITY DIVISION // 1096</div>
+  </div>
+</div>
+
+<!-- PASSWORD POPUP -->
+
+<div id="passwordPopup" style="display:none;">
+  <div class="pp-box">
+    <div class="pp-title">VICTORIAN ARMY — SECURE ACCESS</div>
+    <div class="pp-sub">NODE: HLK-07 // HILLOCK GARRISON // 1096</div>
+    <div class="pp-warn-wrap">
+      <div class="pp-classified-bg">CLASSIFIED</div>
+      <div class="pp-warn-txt">
+        THIS SYSTEM CONTAINS<br>
+        <span class="wr">RESTRICTED MILITARY RECORDS.</span><br>
+        UNAUTHORISED ACCESS IS A<br>
+        <span class="wr">CRIMINAL OFFENCE</span><br>
+        UNDER THE VICTORIAN OFFICIAL SECRETS ACT.
+      </div>
+    </div>
+    <div class="pp-label">ENTER ACCESS CODE TO PROCEED</div>
+    <input class="pp-input" id="passwordInput" type="password" placeholder="— — — — — — — —" autocomplete="off" spellcheck="false">
+    <div class="pp-err" id="passwordError"></div>
+    <button class="pp-btn" id="confirmBtn">[ CONFIRM ]</button>
+    <div class="pp-foot">VA-NET SECURITY DIVISION // 1096</div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+
+<div id="mainContent" style="display:none;">
+  <div class="document">
+    <img id="docWatermark" class="doc-wm" src="" alt="">
+    <div class="doc-content">
+
+```
+  <div class="doc-hdr">
+    <div class="doc-crest-ph" id="crestMainPh">&#9651;</div>
+    <img id="crestMain" class="doc-crest" src="" alt="">
+    <div class="doc-title">VICTORIAN ARMY — ATTESTATION PAPER</div>
+    <div class="doc-sub">VICTORIAN WAR OFFICE — MEDICAL DIVISION</div>
+    <div class="cls-block">
+      <div>
+        <span class="stamp s-red">CONFIDENTIAL</span>
+        &nbsp;&nbsp;
+        <span class="stamp s-blue">CLASSIFIED</span>
+      </div>
+      <div class="supp-cls">
+        SUPPLEMENTARY CLASSIFICATION:
+        <span class="rx-trigger" id="rxTrigger">&#9632;&#9632;&#9632;</span>
+      </div>
+    </div>
+    <div class="doc-num">REF: VA-MED-1096-HLK-0047</div>
+  </div>
+
+  <!-- SECTION I -->
+  <div class="sec">
+    <div class="sec-ttl">SECTION I — PERSONAL PARTICULARS</div>
+    <div class="pid-row">
+      <div class="pid-flds">
+        <div class="f"><span class="fl">Surname</span><span class="fv">Willow</span></div>
+        <div class="f"><span class="fl">Given Name(s)</span><span class="fv">Jane</span></div>
+        <div class="f"><span class="fl">Sex</span><span class="fv">Female</span></div>
+        <div class="f"><span class="fl">Race / Species</span><span class="fv">Vouivre</span></div>
+        <div class="f"><span class="fl">Date of Birth</span><span class="fv">31st May</span></div>
+      </div>
+      <div class="pid-box">
+        <div id="idPh"><div class="pid-icon">&#9651;</div><div style="font-size:8px;text-align:center;letter-spacing:1px;">IDENTIFICATION<br>PHOTOGRAPH</div></div>
+        <img id="idImg" src="" alt="">
+      </div>
+    </div>
+    <div class="f"><span class="fl">Place of Birth</span><span class="fv">Southern Victoria, lakeside district</span></div>
+    <div class="f"><span class="fl">Prior Occupation</span><span class="fv">Civilian (educated household)</span></div>
+    <div class="f"><span class="fl">Next of Kin</span><span class="fv">Father — occupation: barrister</span></div>
+  </div>
+
+  <!-- SECTION II -->
+  <div class="sec">
+    <div class="sec-ttl">SECTION II — PHYSICAL EXAMINATION</div>
+    <div class="f"><span class="fl">Height</span><span class="fv">5'5" (approx. 166 cm)</span></div>
+    <div class="f"><span class="fl">Weight</span><span class="fv">128 lbs (approx. 58 kg)</span></div>
+    <div class="f"><span class="fl">Measurements</span><span class="fv">37 — 24 — 38 in.</span></div>
+    <div class="f"><span class="fl">Colour of Eyes</span><span class="fv">Blue</span></div>
+    <div class="f"><span class="fl">Colour of Hair</span><span class="fv">Blonde (notable length)</span></div>
+    <div class="f"><span class="fl">Vision</span><span class="fv">Within acceptable range</span></div>
+    <div class="f"><span class="fl">Condition of Teeth</span><span class="fv">Excellent</span></div>
+    <div style="margin-top:12px;font-size:9px;color:#3a3028;letter-spacing:1px;margin-bottom:6px;">PHYSICAL EXAMINATION PHOTOGRAPHS — REF: VA-MED-1096-HLK-0047</div>
+    <div class="exam-photos">
+      <div class="exam-box" id="examFront">
+        <div class="exam-ph"><div class="exam-icon">&#9651;</div><div>ANTERIOR<br>FRONT VIEW</div></div>
+        <img src="" alt="">
+      </div>
+      <div class="exam-box" id="examSide">
+        <div class="exam-ph"><div class="exam-icon">&#9651;</div><div>LATERAL<br>SIDE VIEW</div></div>
+        <img src="" alt="">
+      </div>
+      <div class="exam-box" id="examBack">
+        <div class="exam-ph"><div class="exam-icon">&#9651;</div><div>POSTERIOR<br>REAR VIEW</div></div>
+        <img src="" alt="">
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION III -->
+  <div class="sec">
+    <div class="sec-ttl">SECTION III — ORIPATHY SCREENING <span style="font-size:8px;font-family:'Courier Prime';font-weight:normal;letter-spacing:0;">&nbsp;(Victorian Army Medical Supplement — Mandatory since 1089)</span></div>
+    <div class="f"><span class="fl">Infection Status</span><span class="fv"><span class="status-badge">NON-INFECTED</span></span></div>
+    <div class="f"><span class="fl">Assimilation Rate</span><span class="fv">0%</span></div>
+    <div class="f"><span class="fl">Blood Density</span><span class="fv">0.12 u/L</span></div>
+    <div class="f"><span class="fl">Crystal Formations</span><span class="fv">None observed</span></div>
+    <div class="f"><span class="fl">Affected Region(s)</span><span class="fv">N/A</span></div>
+    <div class="f"><span class="fl">Progression Stage</span><span class="fv">N/A</span></div>
+    <div class="f"><span class="fl">Last Screening</span><span class="fv"><span class="rx-i">&#9632;&#9632;&#9632;</span></span></div>
+    <div class="f"><span class="fl">Next Screening Due</span><span class="fv"><span class="rx-i">&#9632;&#9632;&#9632;</span></span></div>
+    <div style="font-size:9px;color:#3a3028;margin-top:8px;margin-bottom:3px;">Medical Officer's Remarks:</div>
+    <div class="oc">Candidate shows no signs of oripathy. Originium exposure appears minimal. All readings within normal parameters. Cleared for active duty.</div>
+  </div>
+
+  <!-- SECTION IV -->
+  <div class="sec">
+    <div class="sec-ttl">SECTION IV — COMBAT &amp; ARTS ASSESSMENT</div>
+    <div class="ag">
+      <div class="f"><span class="fl">Physical Strength</span><span class="fv">Excellent</span></div>
+      <div class="f"><span class="fl">Field Mobility</span><span class="fv">Standard</span></div>
+      <div class="f"><span class="fl">Physiological Endurance</span><span class="fv">Excellent</span></div>
+      <div class="f"><span class="fl">Tactical Planning</span><span class="fv">Average</span></div>
+      <div class="f"><span class="fl">Combat Proficiency</span><span class="fv">Standard</span></div>
+      <div class="f"><span class="fl">Arts Affinity</span><span class="fv">Standard</span></div>
+    </div>
+    <div style="font-size:9px;color:#3a3028;margin-top:6px;margin-bottom:3px;">Arts Capability (Notes):</div>
+    <div class="oc">No active Arts use confirmed. Vouivre physiological resilience noted.</div>
+  </div>
+
+  <!-- SECTION V -->
+  <div class="sec">
+    <div class="sec-ttl">SECTION V — DISTINGUISHING FEATURES &amp; MARKS</div>
+    <div class="f"><span class="fl">Scars</span><span class="fv">None</span></div>
+    <div class="f"><span class="fl">Tattoos</span><span class="fv">None</span></div>
+    <div style="font-size:9px;color:#3a3028;margin-top:6px;margin-bottom:3px;">Distinguishing Features:</div>
+    <div class="oc">Notably long blonde hair. Vouivre-type horn structure. Maintains exceptionally well-kept appearance consistent with ceremonial standards.</div>
+  </div>
+
+  <!-- SECTION VI -->
+  <div class="sec">
+    <div class="sec-ttl">SECTION VI — SERVICE RECORD</div>
+    <div class="f"><span class="fl">Date of Enlistment</span><span class="fv"><span class="rx-i">&#9632;&#9632;&#9632;</span></span></div>
+    <div class="f"><span class="fl">Regiment / Unit</span><span class="fv">Hillock County Garrison — Ceremonial Guard Detachment</span></div>
+    <div class="f"><span class="fl">Length of Service</span><span class="fv">Approx. 1 year</span></div>
+    <div class="f"><span class="fl">Fit for Service</span><span class="fv">YES — Cleared</span></div>
+    <div style="font-size:9px;color:#3a3028;margin-top:8px;margin-bottom:3px;">Commanding Officer's Remarks:</div>
+    <div class="oc">Willow is among the finest ceremonial soldiers under my command. Her dedication to duty extends beyond the parade ground — she maintains morale within the unit and conducts herself with both grace and good character. A distinguished member of this detachment.</div>
+  </div>
+
+  <!-- SECTION VII -->
+  <div class="sec">
+    <div class="sec-ttl">SECTION VII — ADMINISTRATIVE</div>
+    <div class="sig-g">
+      <div class="sig-b"><div>Document Number</div><div class="sig-v">VA-MED-1096-HLK-0047</div></div>
+      <div class="sig-b"><div>Issuing Authority</div><div class="sig-v">Victorian War Office</div></div>
+      <div class="sig-b"><div>Date of Issue</div><div class="sig-v"><span class="rx-i">&#9632;&#9632;&#9632;</span></div></div>
+      <div class="sig-b"><div>Attesting Officer Signature</div><div class="sig-v"><span class="rx-i">&#9632;&#9632;&#9632;</span></div></div>
+      <div class="sig-b"><div>Medical Officer</div><div class="sig-v">Dr. Edmund Harcourt</div></div>
+      <div class="sig-b"><div>Medical Officer Signature</div><div class="sig-v"><span class="rx-i">&#9632;&#9632;&#9632;</span></div></div>
+    </div>
+  </div>
+
+  <div class="doc-ftr">
+    <div class="wo-stamp">VICTORIAN WAR OFFICE<br>HILLOCK GARRISON<br>1096</div>
+    <div class="note-txt">Unauthorised reproduction or distribution of this document is a criminal offence under the Victorian Official Secrets Act.<br><span style="font-size:7px;">Form VA-ATT-07 (Rev. 1089)</span></div>
+  </div>
+
+</div>
+```
+
+  </div>
+</div>
+
+<!-- BACK OVERLAY -->
+
+<div id="overlay" style="display:none;">
+  <button class="close-btn" id="closeBtn">[ CLOSE — ESC ]</button>
+  <div class="back-doc">
+    <div class="back-wm">EYES ONLY</div>
+    <div class="back-cnt">
+
+```
+  <div class="back-hdr">
+    <div class="back-ttl">SUPPLEMENTARY EXAMINATION RECORD</div>
+    <div class="back-sub">SUB-FILE — REF: VA-MED-1096-HLK-0047</div>
+    <div style="margin-top:8px;"><span class="warn-stamp">EYES ONLY</span></div>
+    <div style="margin-top:6px;"><span class="stamp s-red" style="font-size:10px;transform:rotate(0deg);">RESTRICTED — DR. E. HARCOURT ONLY</span></div>
+  </div>
+
+  <div class="acc-warn">!! UNAUTHORISED ACCESS TO THIS FILE IS A COURT-MARTIAL OFFENCE !!<br>ACCESS LOG IS NOT MAINTAINED FOR THIS SUB-FILE BY DESIGN</div>
+
+  <div class="b-sec">
+    <div class="b-sec-ttl">SUBJECT IDENTIFICATION</div>
+    <div class="bf"><span class="bfl">Subject</span><span class="bfv">Willow, Jane</span></div>
+    <div class="bf"><span class="bfl">Date(s) of Examination</span><span class="bfv"><span class="rx-b">&#9632;&#9632;&#9632;</span> / <span class="rx-b">&#9632;&#9632;&#9632;</span> / <span class="rx-b">&#9632;&#9632;&#9632;</span></span></div>
+    <div class="bf"><span class="bfl">Examiner</span><span class="bfv">Dr. Edmund Harcourt</span></div>
+    <div class="bf"><span class="bfl">Location</span><span class="bfv">Medical Office — Hillock Garrison<br><span style="font-size:9px;font-style:italic;">Conducted outside standard examination hours. No formal witness present.</span></span></div>
+  </div>
+
+  <!-- ITEM 01 -->
+  <div class="b-sec">
+    <div class="b-sec-ttl">ITEM 01 — LACTATION RISK ASSESSMENT<br><span style="font-weight:normal;font-size:9px;">( Oripathy Breast Milk Transmission Risk Evaluation )</span></div>
+    <div class="i-blk">
+      <div class="i-row">Crystalline formations in breast tissue: <strong>None detected.</strong></div>
+      <div class="i-row">Mammary gland abnormality: <strong>None observed.</strong></div>
+      <div class="i-row">Skin discolouration and lesions: <strong>None detected.</strong></div>
+      <hr class="b-div">
+      <div class="i-row">Nipple and areola assessment:</div>
+      <div class="i-row" style="padding-left:12px;">— Discolouration: None.</div>
+      <div class="i-row" style="padding-left:12px;">— Crystal formations: None.</div>
+      <div class="i-row" style="padding-left:12px;">— Pigmentation and morphology: Within normal parameters.</div>
+      <div class="i-row" style="padding-left:12px;">— Sensitivity response test conducted via direct stimulation.</div>
+      <div class="i-row" style="padding-left:12px;">— Response noted as <strong>pronounced.</strong></div>
+    </div>
+    <div class="m-txt"><span style="font-size:9px;color:#4a2818;letter-spacing:1px;">EXAMINATION METHOD:</span><br>Visual inspection and manual examination conducted. Subject instructed to disrobe from the waist up. Direct palpation of mammary tissue, nipple and areola performed for comprehensive assessment. Subject raised no objection at any point.</div>
+    <div class="en"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>Subject remained fully compliant throughout. Physiological response to stimulation was within normal range, yet notably pronounced.<br><br>Subject showed no sign of suspicion regarding the nature of this examination. Signs of embarrassment were observed, however no resistance was offered at any point.<br><br>Periodic follow-up examination is strongly recommended.</div>
+    <div class="b-photo" id="item01Photo">
+      <span class="b-photo-lbl">PHOTOGRAPHIC DOCUMENTATION — ITEM 01</span>
+      <div class="b-photo-ph"><div class="b-photo-ph-icon">&#9651;</div><div>INSERT PHOTOGRAPH HERE</div><div style="font-size:7px;">RESTRICTED — EYES ONLY</div></div>
+      <img class="b-photo-img" src="" alt="">
+    </div>
+  </div>
+
+  <!-- ITEM 02 -->
+  <div class="b-sec">
+    <div class="b-sec-ttl">ITEM 02 — BODY HAIR ASSESSMENT</div>
+    <div class="i-blk">
+      <div class="i-row">Pubic and full body hair status: <strong>Minimal. Well-maintained.</strong></div>
+      <div class="i-row">Crystal formations in hair follicles or surrounding tissue: <strong>None detected.</strong></div>
+    </div>
+    <div class="m-txt"><span style="font-size:9px;color:#4a2818;letter-spacing:1px;">EXAMINATION METHOD:</span><br>Full visual inspection conducted. Subject instructed to maintain upright and designated positions throughout examination. Detailed observation of body hair including pubic region recorded for documentation purposes.</div>
+    <div class="en"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>Consistent with the meticulous personal grooming habits observed in ceremonial personnel. Remarkable attention to detail.</div>
+    <div class="b-photo" id="item02Photo">
+      <span class="b-photo-lbl">PHOTOGRAPHIC DOCUMENTATION — ITEM 02</span>
+      <div class="b-photo-ph"><div class="b-photo-ph-icon">&#9651;</div><div>INSERT PHOTOGRAPH HERE</div><div style="font-size:7px;">RESTRICTED — EYES ONLY</div></div>
+      <img class="b-photo-img" src="" alt="">
+    </div>
+  </div>
+
+  <!-- ITEM 03 -->
+  <div class="b-sec">
+    <div class="b-sec-ttl">ITEM 03 — REPRODUCTIVE HEALTH ASSESSMENT<br><span style="font-weight:normal;font-size:9px;">( Oripathy Vertical Transmission Risk Evaluation )</span></div>
+    <div class="i-blk">
+      <div class="i-row">Virginity status: <strong>Confirmed intact.</strong></div>
+      <div class="en" style="margin:6px 0;"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>As anticipated. The preservation of this condition serves as an important baseline for future examinations.</div>
+      <hr class="b-div">
+      <div class="i-row">Uterine abnormality: <strong>None observed.</strong></div>
+      <div class="en" style="margin:6px 0;"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>Reproductive system found to be in excellent overall condition. Worthy of documentation.</div>
+      <hr class="b-div">
+      <div class="i-row">Oripathy-related lesions in reproductive organs: <strong>None detected.</strong></div>
+      <div class="en" style="margin:6px 0;"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>No signs of infection whatsoever. Physical condition is exemplary.</div>
+      <hr class="b-div">
+      <div class="i-row">Internal crystal formations: <strong>None detected.</strong></div>
+      <div class="en" style="margin:6px 0;"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>Internal tissue condition is exceptionally satisfactory.</div>
+      <hr class="b-div">
+      <div class="i-row">Skin discolouration in surrounding tissue: <strong>None.</strong></div>
+      <div class="en" style="margin:6px 0;"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>Visual inspection revealed findings of particular note. Detailed documentation required.</div>
+      <hr class="b-div">
+      <div class="i-row" style="margin-top:4px;">Vaginal secretion sample collected for Originium particle analysis.</div>
+      <div class="i-row">Specimen collected via manual swabbing. Subject instructed to remain still.</div>
+      <div class="i-row">Sample volume: <strong>Sufficient for analysis.</strong> Colour and consistency: <strong>Within normal parameters.</strong></div>
+      <div class="en" style="margin:6px 0;"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>Slight agitation observed during collection procedure. However subject complied without resistance. Condition of specimen was of considerable interest.</div>
+    </div>
+    <div class="m-txt"><span style="font-size:9px;color:#4a2818;letter-spacing:1px;">EXAMINATION METHOD:</span><br>Full physical inspection conducted in accordance with Oripathy Maternal Transmission Prevention Protocol. Subject instructed to disrobe fully.</div>
+    <div class="en"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>Subject displayed momentary hesitation upon instruction to disrobe. Hesitation resolved upon framing within medical context. Compliance is most satisfactory.</div>
+    <div class="m-txt">Subject positioned in supine position on examination table. Both lower limbs instructed to remain in open position throughout procedure.</div>
+    <div class="en"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>Signs of embarrassment observed upon assumption of required position. However no resistance was offered at any point. This is entirely satisfactory.</div>
+    <div class="m-txt">Visual inspection of hymen conducted.</div>
+    <div class="en"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>Detailed observation carried out during visual inspection. Subject averted gaze throughout, however position was maintained without deviation.</div>
+    <div class="m-txt">Manual internal examination performed via digital palpation.</div>
+    <div class="en"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>Pronounced tension observed at commencement of internal examination. No resistance offered whatsoever. Subject displays no suspicion regarding the nature of this procedure. This is most satisfactory.</div>
+    <div class="m-txt">Secretion sample collected via manual swabbing following internal examination.</div>
+    <div class="en"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>Collection procedure conducted with particular thoroughness. Subject raised no objection whatsoever. Results were of considerable interest.</div>
+    <div class="m-txt">Extended examination duration required for thorough documentation of findings.<br>Duration: <span class="rx-b">&#9632;&#9632;</span> minutes. Subject raised no objection at any point. No formal witness present. Conducted outside standard examination hours.</div>
+    <div class="en"><span class="en-lbl">[ CONCLUDING NOTE — ITEM 03 ]</span>Results consistent with expectations given subject's background and discipline.<br><br>Subject remains entirely unaware of the discretionary nature of this documentation. This is most satisfactory.<br><br>Periodic re-examination strongly warranted.</div>
+    <div class="b-photo" id="item03Photo">
+      <span class="b-photo-lbl">PHOTOGRAPHIC DOCUMENTATION — ITEM 03</span>
+      <div class="b-photo-ph"><div class="b-photo-ph-icon">&#9651;</div><div>INSERT PHOTOGRAPH HERE</div><div style="font-size:7px;">RESTRICTED — EYES ONLY</div></div>
+      <img class="b-photo-img" src="" alt="">
+    </div>
+  </div>
+
+  <!-- FINAL RECORD -->
+  <div class="b-sec">
+    <div class="b-sec-ttl">FINAL EXAMINATION RECORD<br><span style="font-weight:normal;font-size:9px;">THERAPEUTIC INTERVENTION PROCEDURE ( Oripathy Reproductive System Treatment Protocol )</span></div>
+    <div style="font-size:9px;color:#8b0000;letter-spacing:1px;margin-bottom:12px;">DATE: <span class="rx-b">&#9632;&#9632;&#9632;</span> &nbsp;|&nbsp; EXAMINER: Dr. Edmund Harcourt &nbsp;|&nbsp; WITNESS: NONE</div>
+
+    <div class="step-blk">
+      <div class="step-ttl">STEP 1 — PREPARATION</div>
+      <div class="step-txt">Subject instructed to disrobe fully and assume supine position on examination table. Both lower limbs positioned in open position per protocol. Subject complied following brief hesitation.<br><br>Examination area confirmed sterile. No formal witness present. Procedure conducted outside standard examination hours.</div>
+      <div class="en"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>Subject appeared apprehensive upon assuming position. Notably more hesitant than previous examinations. Compliance achieved nonetheless.</div>
+    </div>
+
+    <div class="step-blk">
+      <div class="step-ttl">STEP 2 — PRELIMINARY ASSESSMENT</div>
+      <div class="step-txt">Visual inspection conducted. Manual external examination performed to assess tissue condition prior to intervention. Tissue response noted. Subject instructed to remain still.</div>
+      <div class="en"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>Subject's physical response to preliminary examination was consistent with previous recorded responses. Subject averted gaze throughout. No objection raised.</div>
+    </div>
+
+    <div class="step-blk">
+      <div class="step-ttl">STEP 3 — THERAPEUTIC INTERVENTION</div>
+      <div class="step-txt">Intervention commenced following completion of preliminary assessment.<br><br>Subject displayed resistance inconsistent with previous examinations upon commencement of procedure.<br><br>Subject verbally requested cessation of procedure. Request noted. Procedure continued in accordance with therapeutic protocol.<br><br>Involuntary vocalisation noted throughout procedure. Subject instructed to suppress vocalisation. Partial compliance achieved.</div>
+      <div class="en"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>Resistance encountered at this stage was unexpected given subject's previously demonstrated compliance. However resistance subsided within acceptable timeframe. Procedure was completed successfully.<br><br>Subject's verbal request for cessation is noted for the record. No formal objection was raised through appropriate channels. This is satisfactory.</div>
+      <div class="b-photo" id="step3Photo">
+        <span class="b-photo-lbl">PHOTOGRAPHIC DOCUMENTATION — STEP 3</span>
+        <div class="b-photo-ph"><div class="b-photo-ph-icon">&#9651;</div><div>INSERT PHOTOGRAPH HERE</div><div style="font-size:7px;">RESTRICTED — EYES ONLY</div></div>
+        <img class="b-photo-img" src="" alt="">
+      </div>
+    </div>
+
+    <div class="step-blk">
+      <div class="step-ttl">STEP 4 — POST-INTERVENTION ASSESSMENT</div>
+      <div class="step-txt">Visual and manual examination conducted following completion of intervention.<br><br>Virginity status: <strong>Revised. See supplementary notes.</strong><br><br>Tissue condition: Within expected parameters given nature of intervention.<br><br>Subject wept briefly following completion of assessment. No formal objection raised. Subject did not report incident to any third party.</div>
+      <div class="en"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>Post-intervention emotional response is within anticipated parameters. Subject's fundamental disposition toward compliance with medical authority remains intact despite temporary emotional disturbance.<br><br>Subject did not report incident to any third party. This confirms subject's deep-seated deference to medical authority. Most satisfactory.</div>
+      <div class="b-photo" id="step4Photo">
+        <span class="b-photo-lbl">PHOTOGRAPHIC DOCUMENTATION — STEP 4</span>
+        <div class="b-photo-ph"><div class="b-photo-ph-icon">&#9651;</div><div>INSERT PHOTOGRAPH HERE</div><div style="font-size:7px;">RESTRICTED — EYES ONLY</div></div>
+        <img class="b-photo-img" src="" alt="">
+      </div>
+    </div>
+
+    <div class="step-blk">
+      <div class="step-ttl">STEP 5 — DOCUMENTATION AND DISCHARGE</div>
+      <div class="step-txt">All findings recorded in accordance with supplementary examination protocol.<br><br>Subject instructed to dress and return to duties as normal. Subject complied without further objection.<br><br>Subject's demeanour upon discharge was notably subdued. No further vocalisation or emotional response observed.</div>
+      <div class="en"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>Subject's composed demeanour upon discharge is noted with interest. Subject appears to have internalised the procedure as a medical necessity. This is the most satisfactory outcome possible.<br><br>Subject did not report incident to any third party. This is confirmed.<br><br>Periodic re-examination is strongly recommended. Subject's continued compliance is anticipated.</div>
+    </div>
+  </div>
+
+  <div class="concl">
+    <div class="concl-ttl">CONCLUDING REMARKS — DR. E. HARCOURT</div>
+    <div class="concl-txt">Subject has demonstrated throughout the course of examination an exceptional degree of compliance with medical authority.</div>
+    <div class="concl-txt">The progression from initial examination to therapeutic intervention has proceeded with minimal complication.</div>
+    <div class="concl-txt">Subject's fundamental character — her discipline, her trust, her silence — makes her an ideal subject for continued monitoring.</div>
+    <div class="final-ln">She will not speak of this.<br>She never does.</div>
+  </div>
+
+  <div class="b-seal">
+    <div class="p-seal">DR. E. HARCOURT<br>PERSONAL SEAL<br>VA MEDICAL CORPS</div>
+    <div class="eo-stamp">EYES ONLY</div>
+  </div>
+
+</div>
+```
+
+  </div>
+</div>
+
+<script>
+(function() {
+  var PW = 'hillock7';
+  function $(id){ return document.getElementById(id); }
+
+  // ENTER
+  $('enterBtn').addEventListener('click', function() {
+    $('entryScreen').style.display = 'none';
+    $('mainContent').style.display = 'flex';
+    $('passwordPopup').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  });
+
+  // PASSWORD
+  function checkPW() {
+    var inp = $('passwordInput');
+    var err = $('passwordError');
+    if (inp.value.trim() === PW) {
+      $('passwordPopup').style.display = 'none';
+      document.body.style.overflow = '';
+    } else {
+      inp.style.borderBottomColor = '#8b1a1a';
+      inp.style.color = '#8b1a1a';
+      err.textContent = 'ACCESS DENIED — INVALID CODE';
+      inp.value = '';
+      setTimeout(function() {
+        inp.style.borderBottomColor = '';
+        inp.style.color = '';
+        err.textContent = '';
+      }, 2000);
+    }
+  }
+  $('confirmBtn').addEventListener('click', checkPW);
+  $('passwordInput').addEventListener('keydown', function(e){ if(e.key==='Enter') checkPW(); });
+
+  // BACK OVERLAY
+  $('rxTrigger').addEventListener('click', function() {
+    $('overlay').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  });
+  $('closeBtn').addEventListener('click', function() {
+    $('overlay').style.display = 'none';
+    document.body.style.overflow = '';
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      $('overlay').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  });
+
+  // IMAGES
+  function tryImg(el, src, cb) {
+    if (!el) return;
+    var t = new Image();
+    t.onload = function(){ el.src = src; if(cb) cb(); };
+    t.onerror = function(){};
+    t.src = src;
+  }
+
+  tryImg($('crestEntry'), 'images/crest_popup.png', function(){
+    $('crestEntry').style.display = 'block';
+    $('crestEntryPh').style.display = 'none';
+  });
+  tryImg($('crestMain'), 'images/crest.png', function(){
+    $('crestMain').style.display = 'block';
+    $('crestMainPh').style.display = 'none';
+  });
+  tryImg($('docWatermark'), 'images/crest.png', function(){
+    $('docWatermark').style.display = 'block';
+  });
+  tryImg($('idImg'), 'images/id_photo.jpg', function(){
+    $('idImg').style.display = 'block';
+    $('idPh').style.display = 'none';
+  });
+
+  var examIds = ['examFront','examSide','examBack'];
+  var examSrcs = ['exam_front','exam_side','exam_back'];
+  examIds.forEach(function(id, i) {
+    var box = $(id); if(!box) return;
+    var img = box.querySelector('img');
+    var ph  = box.querySelector('.exam-ph');
+    tryImg(img, 'images/'+examSrcs[i]+'.jpg', function(){
+      img.style.display = 'block';
+      box.style.padding = '0';
+      if(ph) ph.style.display = 'none';
+    });
+  });
+
+  [['item01Photo','item01_photo.jpg'],['item02Photo','item02_photo.jpg'],
+   ['item03Photo','item03_photo.jpg'],['step3Photo','step3_photo.jpg'],['step4Photo','step4_photo.jpg']
+  ].forEach(function(p) {
+    var c = $(p[0]); if(!c) return;
+    var img = c.querySelector('.b-photo-img');
+    var ph  = c.querySelector('.b-photo-ph');
+    tryImg(img, 'images/'+p[1], function(){
+      img.style.display = 'block';
+      if(ph) ph.style.display = 'none';
+    });
+  });
+
+})();
+</script>
+
+</body>
+</html>
