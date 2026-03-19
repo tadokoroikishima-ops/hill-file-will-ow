@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>VA-MED-1096-HLK-0047 — RESTRICTED</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ENTRY SCREEN -->
+
+<div id="entryScreen" style="display:flex;">
+  <div class="entry-box">
+    <div class="entry-crest-ph" id="crestEntryPh">&#9651;</div>
+    <img id="crestEntry" class="entry-crest" src="" alt="">
+    <div class="entry-classified">CLASSIFIED</div>
+    <div class="entry-title">VICTORIAN WAR OFFICE</div>
+    <div class="entry-sub">
+      THIS DOCUMENT CONTAINS<br>
+      <span class="w">HIGHLY CLASSIFIED MILITARY RECORDS</span><br>
+      AUTHORISED PERSONNEL ONLY<br>
+      UNAUTHORISED ACCESS IS A CRIMINAL OFFENCE
+    </div>
+    <hr class="entry-hr">
+    <div class="entry-sub" style="margin-bottom:0;font-size:8px;">VA-MED-1096-HLK-0047 // HILLOCK GARRISON</div>
+    <button class="entry-btn" id="enterBtn">[ ENTER ]</button>
+    <div class="entry-footer">VA-NET SECURITY DIVISION // 1096</div>
+  </div>
+</div>
+
+<!-- PASSWORD POPUP -->
+
+<div id="passwordPopup" style="display:none;">
+  <div class="pp-box">
+    <div class="pp-title">VICTORIAN ARMY — SECURE ACCESS</div>
+    <div class="pp-sub">NODE: HLK-07 // HILLOCK GARRISON // 1096</div>
+    <div class="pp-warn-wrap">
+      <div class="pp-classified-bg">CLASSIFIED</div>
+      <div class="pp-warn-txt">
+        THIS SYSTEM CONTAINS<br>
+        <span class="wr">RESTRICTED MILITARY RECORDS.</span><br>
+        UNAUTHORISED ACCESS IS A<br>
+        <span class="wr">CRIMINAL OFFENCE</span><br>
+        UNDER THE VICTORIAN OFFICIAL SECRETS ACT.
+      </div>
+    </div>
+    <div class="pp-label">ENTER ACCESS CODE TO PROCEED</div>
+    <input class="pp-input" id="passwordInput" type="password" placeholder="— — — — — — — —" autocomplete="off" spellcheck="false">
+    <div class="pp-err" id="passwordError"></div>
+    <button class="pp-btn" id="confirmBtn">[ CONFIRM ]</button>
+    <div class="pp-foot">VA-NET SECURITY DIVISION // 1096</div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+
+<div id="mainContent" style="display:none;">
+  <div class="document">
+    <img id="docWatermark" class="doc-wm" src="" alt="">
+    <div class="doc-content">
+
+```
+  <div class="doc-hdr">
+    <div class="doc-crest-ph" id="crestMainPh">&#9651;</div>
+    <img id="crestMain" class="doc-crest" src="" alt="">
+    <div class="doc-title">VICTORIAN ARMY — ATTESTATION PAPER</div>
+    <div class="doc-sub">VICTORIAN WAR OFFICE — MEDICAL DIVISION</div>
+    <div class="cls-block">
+      <div>
+        <span class="stamp s-red">CONFIDENTIAL</span>
+        &nbsp;&nbsp;
+        <span class="stamp s-blue">CLASSIFIED</span>
+      </div>
+      <div class="supp-cls">
+        SUPPLEMENTARY CLASSIFICATION:
+        <span class="rx-trigger" id="rxTrigger">&#9632;&#9632;&#9632;</span>
+      </div>
+    </div>
+    <div class="doc-num">REF: VA-MED-1096-HLK-0047</div>
+  </div>
+
+  <!-- SECTION I -->
+  <div class="sec">
+    <div class="sec-ttl">SECTION I — PERSONAL PARTICULARS</div>
+    <div class="pid-row">
+      <div class="pid-flds">
+        <div class="f"><span class="fl">Surname</span><span class="fv">Willow</span></div>
+        <div class="f"><span class="fl">Given Name(s)</span><span class="fv">Jane</span></div>
+        <div class="f"><span class="fl">Sex</span><span class="fv">Female</span></div>
+        <div class="f"><span class="fl">Race / Species</span><span class="fv">Vouivre</span></div>
+        <div class="f"><span class="fl">Date of Birth</span><span class="fv">31st May</span></div>
+      </div>
+      <div class="pid-box">
+        <div id="idPh"><div class="pid-icon">&#9651;</div><div style="font-size:8px;text-align:center;letter-spacing:1px;">IDENTIFICATION<br>PHOTOGRAPH</div></div>
+        <img id="idImg" src="" alt="">
+      </div>
+    </div>
+    <div class="f"><span class="fl">Place of Birth</span><span class="fv">Southern Victoria, lakeside district</span></div>
+    <div class="f"><span class="fl">Prior Occupation</span><span class="fv">Civilian (educated household)</span></div>
+    <div class="f"><span class="fl">Next of Kin</span><span class="fv">Father — occupation: barrister</span></div>
+  </div>
+
+  <!-- SECTION II -->
+  <div class="sec">
+    <div class="sec-ttl">SECTION II — PHYSICAL EXAMINATION</div>
+    <div class="f"><span class="fl">Height</span><span class="fv">5'5" (approx. 166 cm)</span></div>
+    <div class="f"><span class="fl">Weight</span><span class="fv">128 lbs (approx. 58 kg)</span></div>
+    <div class="f"><span class="fl">Measurements</span><span class="fv">37 — 24 — 38 in.</span></div>
+    <div class="f"><span class="fl">Colour of Eyes</span><span class="fv">Blue</span></div>
+    <div class="f"><span class="fl">Colour of Hair</span><span class="fv">Blonde (notable length)</span></div>
+    <div class="f"><span class="fl">Vision</span><span class="fv">Within acceptable range</span></div>
+    <div class="f"><span class="fl">Condition of Teeth</span><span class="fv">Excellent</span></div>
+    <div style="margin-top:12px;font-size:9px;color:#3a3028;letter-spacing:1px;margin-bottom:6px;">PHYSICAL EXAMINATION PHOTOGRAPHS — REF: VA-MED-1096-HLK-0047</div>
+    <div class="exam-photos">
+      <div class="exam-box" id="examFront">
+        <div class="exam-ph"><div class="exam-icon">&#9651;</div><div>ANTERIOR<br>FRONT VIEW</div></div>
+        <img src="" alt="">
+      </div>
+      <div class="exam-box" id="examSide">
+        <div class="exam-ph"><div class="exam-icon">&#9651;</div><div>LATERAL<br>SIDE VIEW</div></div>
+        <img src="" alt="">
+      </div>
+      <div class="exam-box" id="examBack">
+        <div class="exam-ph"><div class="exam-icon">&#9651;</div><div>POSTERIOR<br>REAR VIEW</div></div>
+        <img src="" alt="">
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION III -->
+  <div class="sec">
+    <div class="sec-ttl">SECTION III — ORIPATHY SCREENING <span style="font-size:8px;font-family:'Courier Prime';font-weight:normal;letter-spacing:0;">&nbsp;(Victorian Army Medical Supplement — Mandatory since 1089)</span></div>
+    <div class="f"><span class="fl">Infection Status</span><span class="fv"><span class="status-badge">NON-INFECTED</span></span></div>
+    <div class="f"><span class="fl">Assimilation Rate</span><span class="fv">0%</span></div>
+    <div class="f"><span class="fl">Blood Density</span><span class="fv">0.12 u/L</span></div>
+    <div class="f"><span class="fl">Crystal Formations</span><span class="fv">None observed</span></div>
+    <div class="f"><span class="fl">Affected Region(s)</span><span class="fv">N/A</span></div>
+    <div class="f"><span class="fl">Progression Stage</span><span class="fv">N/A</span></div>
+    <div class="f"><span class="fl">Last Screening</span><span class="fv"><span class="rx-i">&#9632;&#9632;&#9632;</span></span></div>
+    <div class="f"><span class="fl">Next Screening Due</span><span class="fv"><span class="rx-i">&#9632;&#9632;&#9632;</span></span></div>
+    <div style="font-size:9px;color:#3a3028;margin-top:8px;margin-bottom:3px;">Medical Officer's Remarks:</div>
+    <div class="oc">Candidate shows no signs of oripathy. Originium exposure appears minimal. All readings within normal parameters. Cleared for active duty.</div>
+  </div>
+
+  <!-- SECTION IV -->
+  <div class="sec">
+    <div class="sec-ttl">SECTION IV — COMBAT &amp; ARTS ASSESSMENT</div>
+    <div class="ag">
+      <div class="f"><span class="fl">Physical Strength</span><span class="fv">Excellent</span></div>
+      <div class="f"><span class="fl">Field Mobility</span><span class="fv">Standard</span></div>
+      <div class="f"><span class="fl">Physiological Endurance</span><span class="fv">Excellent</span></div>
+      <div class="f"><span class="fl">Tactical Planning</span><span class="fv">Average</span></div>
+      <div class="f"><span class="fl">Combat Proficiency</span><span class="fv">Standard</span></div>
+      <div class="f"><span class="fl">Arts Affinity</span><span class="fv">Standard</span></div>
+    </div>
+    <div style="font-size:9px;color:#3a3028;margin-top:6px;margin-bottom:3px;">Arts Capability (Notes):</div>
+    <div class="oc">No active Arts use confirmed. Vouivre physiological resilience noted.</div>
+  </div>
+
+  <!-- SECTION V -->
+  <div class="sec">
+    <div class="sec-ttl">SECTION V — DISTINGUISHING FEATURES &amp; MARKS</div>
+    <div class="f"><span class="fl">Scars</span><span class="fv">None</span></div>
+    <div class="f"><span class="fl">Tattoos</span><span class="fv">None</span></div>
+    <div style="font-size:9px;color:#3a3028;margin-top:6px;margin-bottom:3px;">Distinguishing Features:</div>
+    <div class="oc">Notably long blonde hair. Vouivre-type horn structure. Maintains exceptionally well-kept appearance consistent with ceremonial standards.</div>
+  </div>
+
+  <!-- SECTION VI -->
+  <div class="sec">
+    <div class="sec-ttl">SECTION VI — SERVICE RECORD</div>
+    <div class="f"><span class="fl">Date of Enlistment</span><span class="fv"><span class="rx-i">&#9632;&#9632;&#9632;</span></span></div>
+    <div class="f"><span class="fl">Regiment / Unit</span><span class="fv">Hillock County Garrison — Ceremonial Guard Detachment</span></div>
+    <div class="f"><span class="fl">Length of Service</span><span class="fv">Approx. 1 year</span></div>
+    <div class="f"><span class="fl">Fit for Service</span><span class="fv">YES — Cleared</span></div>
+    <div style="font-size:9px;color:#3a3028;margin-top:8px;margin-bottom:3px;">Commanding Officer's Remarks:</div>
+    <div class="oc">Willow is among the finest ceremonial soldiers under my command. Her dedication to duty extends beyond the parade ground — she maintains morale within the unit and conducts herself with both grace and good character. A distinguished member of this detachment.</div>
+  </div>
+
+  <!-- SECTION VII -->
+  <div class="sec">
+    <div class="sec-ttl">SECTION VII — ADMINISTRATIVE</div>
+    <div class="sig-g">
+      <div class="sig-b"><div>Document Number</div><div class="sig-v">VA-MED-1096-HLK-0047</div></div>
+      <div class="sig-b"><div>Issuing Authority</div><div class="sig-v">Victorian War Office</div></div>
+      <div class="sig-b"><div>Date of Issue</div><div class="sig-v"><span class="rx-i">&#9632;&#9632;&#9632;</span></div></div>
+      <div class="sig-b"><div>Attesting Officer Signature</div><div class="sig-v"><span class="rx-i">&#9632;&#9632;&#9632;</span></div></div>
+      <div class="sig-b"><div>Medical Officer</div><div class="sig-v">Dr. Edmund Harcourt</div></div>
+      <div class="sig-b"><div>Medical Officer Signature</div><div class="sig-v"><span class="rx-i">&#9632;&#9632;&#9632;</span></div></div>
+    </div>
+  </div>
+
+  <div class="doc-ftr">
+    <div class="wo-stamp">VICTORIAN WAR OFFICE<br>HILLOCK GARRISON<br>1096</div>
+    <div class="note-txt">Unauthorised reproduction or distribution of this document is a criminal offence under the Victorian Official Secrets Act.<br><span style="font-size:7px;">Form VA-ATT-07 (Rev. 1089)</span></div>
+  </div>
+
+</div>
+```
+
+  </div>
+</div>
+
+<!-- BACK OVERLAY -->
+
+<div id="overlay" style="display:none;">
+  <button class="close-btn" id="closeBtn">[ CLOSE — ESC ]</button>
+  <div class="back-doc">
+    <div class="back-wm">EYES ONLY</div>
+    <div class="back-cnt">
+
+```
+  <div class="back-hdr">
+    <div class="back-ttl">SUPPLEMENTARY EXAMINATION RECORD</div>
+    <div class="back-sub">SUB-FILE — REF: VA-MED-1096-HLK-0047</div>
+    <div style="margin-top:8px;"><span class="warn-stamp">EYES ONLY</span></div>
+    <div style="margin-top:6px;"><span class="stamp s-red" style="font-size:10px;transform:rotate(0deg);">RESTRICTED — DR. E. HARCOURT ONLY</span></div>
+  </div>
+
+  <div class="acc-warn">!! UNAUTHORISED ACCESS TO THIS FILE IS A COURT-MARTIAL OFFENCE !!<br>ACCESS LOG IS NOT MAINTAINED FOR THIS SUB-FILE BY DESIGN</div>
+
+  <div class="b-sec">
+    <div class="b-sec-ttl">SUBJECT IDENTIFICATION</div>
+    <div class="bf"><span class="bfl">Subject</span><span class="bfv">Willow, Jane</span></div>
+    <div class="bf"><span class="bfl">Date(s) of Examination</span><span class="bfv"><span class="rx-b">&#9632;&#9632;&#9632;</span> / <span class="rx-b">&#9632;&#9632;&#9632;</span> / <span class="rx-b">&#9632;&#9632;&#9632;</span></span></div>
+    <div class="bf"><span class="bfl">Examiner</span><span class="bfv">Dr. Edmund Harcourt</span></div>
+    <div class="bf"><span class="bfl">Location</span><span class="bfv">Medical Office — Hillock Garrison<br><span style="font-size:9px;font-style:italic;">Conducted outside standard examination hours. No formal witness present.</span></span></div>
+  </div>
+
+  <!-- ITEM 01 -->
+  <div class="b-sec">
+    <div class="b-sec-ttl">ITEM 01 — LACTATION RISK ASSESSMENT<br><span style="font-weight:normal;font-size:9px;">( Oripathy Breast Milk Transmission Risk Evaluation )</span></div>
+    <div class="i-blk">
+      <div class="i-row">Crystalline formations in breast tissue: <strong>None detected.</strong></div>
+      <div class="i-row">Mammary gland abnormality: <strong>None observed.</strong></div>
+      <div class="i-row">Skin discolouration and lesions: <strong>None detected.</strong></div>
+      <hr class="b-div">
+      <div class="i-row">Nipple and areola assessment:</div>
+      <div class="i-row" style="padding-left:12px;">— Discolouration: None.</div>
+      <div class="i-row" style="padding-left:12px;">— Crystal formations: None.</div>
+      <div class="i-row" style="padding-left:12px;">— Pigmentation and morphology: Within normal parameters.</div>
+      <div class="i-row" style="padding-left:12px;">— Sensitivity response test conducted via direct stimulation.</div>
+      <div class="i-row" style="padding-left:12px;">— Response noted as <strong>pronounced.</strong></div>
+    </div>
+    <div class="m-txt"><span style="font-size:9px;color:#4a2818;letter-spacing:1px;">EXAMINATION METHOD:</span><br>Visual inspection and manual examination conducted. Subject instructed to disrobe from the waist up. Direct palpation of mammary tissue, nipple and areola performed for comprehensive assessment. Subject raised no objection at any point.</div>
+    <div class="en"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>Subject remained fully compliant throughout. Physiological response to stimulation was within normal range, yet notably pronounced.<br><br>Subject showed no sign of suspicion regarding the nature of this examination. Signs of embarrassment were observed, however no resistance was offered at any point.<br><br>Periodic follow-up examination is strongly recommended.</div>
+    <div class="b-photo" id="item01Photo">
+      <span class="b-photo-lbl">PHOTOGRAPHIC DOCUMENTATION — ITEM 01</span>
+      <div class="b-photo-ph"><div class="b-photo-ph-icon">&#9651;</div><div>INSERT PHOTOGRAPH HERE</div><div style="font-size:7px;">RESTRICTED — EYES ONLY</div></div>
+      <img class="b-photo-img" src="" alt="">
+    </div>
+  </div>
+
+  <!-- ITEM 02 -->
+  <div class="b-sec">
+    <div class="b-sec-ttl">ITEM 02 — BODY HAIR ASSESSMENT</div>
+    <div class="i-blk">
+      <div class="i-row">Pubic and full body hair status: <strong>Minimal. Well-maintained.</strong></div>
+      <div class="i-row">Crystal formations in hair follicles or surrounding tissue: <strong>None detected.</strong></div>
+    </div>
+    <div class="m-txt"><span style="font-size:9px;color:#4a2818;letter-spacing:1px;">EXAMINATION METHOD:</span><br>Full visual inspection conducted. Subject instructed to maintain upright and designated positions throughout examination. Detailed observation of body hair including pubic region recorded for documentation purposes.</div>
+    <div class="en"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>Consistent with the meticulous personal grooming habits observed in ceremonial personnel. Remarkable attention to detail.</div>
+    <div class="b-photo" id="item02Photo">
+      <span class="b-photo-lbl">PHOTOGRAPHIC DOCUMENTATION — ITEM 02</span>
+      <div class="b-photo-ph"><div class="b-photo-ph-icon">&#9651;</div><div>INSERT PHOTOGRAPH HERE</div><div style="font-size:7px;">RESTRICTED — EYES ONLY</div></div>
+      <img class="b-photo-img" src="" alt="">
+    </div>
+  </div>
+
+  <!-- ITEM 03 -->
+  <div class="b-sec">
+    <div class="b-sec-ttl">ITEM 03 — REPRODUCTIVE HEALTH ASSESSMENT<br><span style="font-weight:normal;font-size:9px;">( Oripathy Vertical Transmission Risk Evaluation )</span></div>
+    <div class="i-blk">
+      <div class="i-row">Virginity status: <strong>Confirmed intact.</strong></div>
+      <div class="en" style="margin:6px 0;"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>As anticipated. The preservation of this condition serves as an important baseline for future examinations.</div>
+      <hr class="b-div">
+      <div class="i-row">Uterine abnormality: <strong>None observed.</strong></div>
+      <div class="en" style="margin:6px 0;"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>Reproductive system found to be in excellent overall condition. Worthy of documentation.</div>
+      <hr class="b-div">
+      <div class="i-row">Oripathy-related lesions in reproductive organs: <strong>None detected.</strong></div>
+      <div class="en" style="margin:6px 0;"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>No signs of infection whatsoever. Physical condition is exemplary.</div>
+      <hr class="b-div">
+      <div class="i-row">Internal crystal formations: <strong>None detected.</strong></div>
+      <div class="en" style="margin:6px 0;"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>Internal tissue condition is exceptionally satisfactory.</div>
+      <hr class="b-div">
+      <div class="i-row">Skin discolouration in surrounding tissue: <strong>None.</strong></div>
+      <div class="en" style="margin:6px 0;"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>Visual inspection revealed findings of particular note. Detailed documentation required.</div>
+      <hr class="b-div">
+      <div class="i-row" style="margin-top:4px;">Vaginal secretion sample collected for Originium particle analysis.</div>
+      <div class="i-row">Specimen collected via manual swabbing. Subject instructed to remain still.</div>
+      <div class="i-row">Sample volume: <strong>Sufficient for analysis.</strong> Colour and consistency: <strong>Within normal parameters.</strong></div>
+      <div class="en" style="margin:6px 0;"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>Slight agitation observed during collection procedure. However subject complied without resistance. Condition of specimen was of considerable interest.</div>
+    </div>
+    <div class="m-txt"><span style="font-size:9px;color:#4a2818;letter-spacing:1px;">EXAMINATION METHOD:</span><br>Full physical inspection conducted in accordance with Oripathy Maternal Transmission Prevention Protocol. Subject instructed to disrobe fully.</div>
+    <div class="en"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>Subject displayed momentary hesitation upon instruction to disrobe. Hesitation resolved upon framing within medical context. Compliance is most satisfactory.</div>
+    <div class="m-txt">Subject positioned in supine position on examination table. Both lower limbs instructed to remain in open position throughout procedure.</div>
+    <div class="en"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>Signs of embarrassment observed upon assumption of required position. However no resistance was offered at any point. This is entirely satisfactory.</div>
+    <div class="m-txt">Visual inspection of hymen conducted.</div>
+    <div class="en"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>Detailed observation carried out during visual inspection. Subject averted gaze throughout, however position was maintained without deviation.</div>
+    <div class="m-txt">Manual internal examination performed via digital palpation.</div>
+    <div class="en"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>Pronounced tension observed at commencement of internal examination. No resistance offered whatsoever. Subject displays no suspicion regarding the nature of this procedure. This is most satisfactory.</div>
+    <div class="m-txt">Secretion sample collected via manual swabbing following internal examination.</div>
+    <div class="en"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>Collection procedure conducted with particular thoroughness. Subject raised no objection whatsoever. Results were of considerable interest.</div>
+    <div class="m-txt">Extended examination duration required for thorough documentation of findings.<br>Duration: <span class="rx-b">&#9632;&#9632;</span> minutes. Subject raised no objection at any point. No formal witness present. Conducted outside standard examination hours.</div>
+    <div class="en"><span class="en-lbl">[ CONCLUDING NOTE — ITEM 03 ]</span>Results consistent with expectations given subject's background and discipline.<br><br>Subject remains entirely unaware of the discretionary nature of this documentation. This is most satisfactory.<br><br>Periodic re-examination strongly warranted.</div>
+    <div class="b-photo" id="item03Photo">
+      <span class="b-photo-lbl">PHOTOGRAPHIC DOCUMENTATION — ITEM 03</span>
+      <div class="b-photo-ph"><div class="b-photo-ph-icon">&#9651;</div><div>INSERT PHOTOGRAPH HERE</div><div style="font-size:7px;">RESTRICTED — EYES ONLY</div></div>
+      <img class="b-photo-img" src="" alt="">
+    </div>
+  </div>
+
+  <!-- FINAL RECORD -->
+  <div class="b-sec">
+    <div class="b-sec-ttl">FINAL EXAMINATION RECORD<br><span style="font-weight:normal;font-size:9px;">THERAPEUTIC INTERVENTION PROCEDURE ( Oripathy Reproductive System Treatment Protocol )</span></div>
+    <div style="font-size:9px;color:#8b0000;letter-spacing:1px;margin-bottom:12px;">DATE: <span class="rx-b">&#9632;&#9632;&#9632;</span> &nbsp;|&nbsp; EXAMINER: Dr. Edmund Harcourt &nbsp;|&nbsp; WITNESS: NONE</div>
+
+    <div class="step-blk">
+      <div class="step-ttl">STEP 1 — PREPARATION</div>
+      <div class="step-txt">Subject instructed to disrobe fully and assume supine position on examination table. Both lower limbs positioned in open position per protocol. Subject complied following brief hesitation.<br><br>Examination area confirmed sterile. No formal witness present. Procedure conducted outside standard examination hours.</div>
+      <div class="en"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>Subject appeared apprehensive upon assuming position. Notably more hesitant than previous examinations. Compliance achieved nonetheless.</div>
+    </div>
+
+    <div class="step-blk">
+      <div class="step-ttl">STEP 2 — PRELIMINARY ASSESSMENT</div>
+      <div class="step-txt">Visual inspection conducted. Manual external examination performed to assess tissue condition prior to intervention. Tissue response noted. Subject instructed to remain still.</div>
+      <div class="en"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>Subject's physical response to preliminary examination was consistent with previous recorded responses. Subject averted gaze throughout. No objection raised.</div>
+    </div>
+
+    <div class="step-blk">
+      <div class="step-ttl">STEP 3 — THERAPEUTIC INTERVENTION</div>
+      <div class="step-txt">Intervention commenced following completion of preliminary assessment.<br><br>Subject displayed resistance inconsistent with previous examinations upon commencement of procedure.<br><br>Subject verbally requested cessation of procedure. Request noted. Procedure continued in accordance with therapeutic protocol.<br><br>Involuntary vocalisation noted throughout procedure. Subject instructed to suppress vocalisation. Partial compliance achieved.</div>
+      <div class="en"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>Resistance encountered at this stage was unexpected given subject's previously demonstrated compliance. However resistance subsided within acceptable timeframe. Procedure was completed successfully.<br><br>Subject's verbal request for cessation is noted for the record. No formal objection was raised through appropriate channels. This is satisfactory.</div>
+      <div class="b-photo" id="step3Photo">
+        <span class="b-photo-lbl">PHOTOGRAPHIC DOCUMENTATION — STEP 3</span>
+        <div class="b-photo-ph"><div class="b-photo-ph-icon">&#9651;</div><div>INSERT PHOTOGRAPH HERE</div><div style="font-size:7px;">RESTRICTED — EYES ONLY</div></div>
+        <img class="b-photo-img" src="" alt="">
+      </div>
+    </div>
+
+    <div class="step-blk">
+      <div class="step-ttl">STEP 4 — POST-INTERVENTION ASSESSMENT</div>
+      <div class="step-txt">Visual and manual examination conducted following completion of intervention.<br><br>Virginity status: <strong>Revised. See supplementary notes.</strong><br><br>Tissue condition: Within expected parameters given nature of intervention.<br><br>Subject wept briefly following completion of assessment. No formal objection raised. Subject did not report incident to any third party.</div>
+      <div class="en"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>Post-intervention emotional response is within anticipated parameters. Subject's fundamental disposition toward compliance with medical authority remains intact despite temporary emotional disturbance.<br><br>Subject did not report incident to any third party. This confirms subject's deep-seated deference to medical authority. Most satisfactory.</div>
+      <div class="b-photo" id="step4Photo">
+        <span class="b-photo-lbl">PHOTOGRAPHIC DOCUMENTATION — STEP 4</span>
+        <div class="b-photo-ph"><div class="b-photo-ph-icon">&#9651;</div><div>INSERT PHOTOGRAPH HERE</div><div style="font-size:7px;">RESTRICTED — EYES ONLY</div></div>
+        <img class="b-photo-img" src="" alt="">
+      </div>
+    </div>
+
+    <div class="step-blk">
+      <div class="step-ttl">STEP 5 — DOCUMENTATION AND DISCHARGE</div>
+      <div class="step-txt">All findings recorded in accordance with supplementary examination protocol.<br><br>Subject instructed to dress and return to duties as normal. Subject complied without further objection.<br><br>Subject's demeanour upon discharge was notably subdued. No further vocalisation or emotional response observed.</div>
+      <div class="en"><span class="en-lbl">[ EXAMINER'S NOTE ]</span>Subject's composed demeanour upon discharge is noted with interest. Subject appears to have internalised the procedure as a medical necessity. This is the most satisfactory outcome possible.<br><br>Subject did not report incident to any third party. This is confirmed.<br><br>Periodic re-examination is strongly recommended. Subject's continued compliance is anticipated.</div>
+    </div>
+  </div>
+
+  <div class="concl">
+    <div class="concl-ttl">CONCLUDING REMARKS — DR. E. HARCOURT</div>
+    <div class="concl-txt">Subject has demonstrated throughout the course of examination an exceptional degree of compliance with medical authority.</div>
+    <div class="concl-txt">The progression from initial examination to therapeutic intervention has proceeded with minimal complication.</div>
+    <div class="concl-txt">Subject's fundamental character — her discipline, her trust, her silence — makes her an ideal subject for continued monitoring.</div>
+    <div class="final-ln">She will not speak of this.<br>She never does.</div>
+  </div>
+
+  <div class="b-seal">
+    <div class="p-seal">DR. E. HARCOURT<br>PERSONAL SEAL<br>VA MEDICAL CORPS</div>
+    <div class="eo-stamp">EYES ONLY</div>
+  </div>
+
+</div>
+```
+
+  </div>
+</div>
+
+<script src="script.js" defer></script>
+
+</body>
+</html>
